@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class MyArray<T>
 {
-    List<T> elements = new List<T>();
+    private List<T> elements = new List<T>();
 
     public void AddElement(T element)
     {
@@ -18,7 +18,7 @@ public class MyArray<T>
         }
         else
         {
-            Console.WriteLine("Индекс выходит за рамки дозволенного!");
+            Console.WriteLine("Индекс за пределами массива!");
         }
     }
 
@@ -30,7 +30,7 @@ public class MyArray<T>
         }
         else
         {
-            Console.WriteLine("Индекс выходит за рамки дозволенного!");
+            Console.WriteLine("Индекс за пределами массива!");
             return default(T);
         }
     }

@@ -1,40 +1,40 @@
 ﻿using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main(string[] args)
     {
         Store store = new Store();
-        store.AddProduct(new Product("Кефир", 1.2, 100));
-        store.AddProduct(new Product("Печенье", 0.5, 200));
 
-        store.PurchaseProduct("Кефир", 2);
-        store.PurchaseProduct("Печенье", 5);
+        store.AddProduct(new Product("Яблоко", 0.99m, 100, DateTime.Now.AddMonths(1)));
+        store.AddProduct(new Product("Банан", 0.59m, 200, DateTime.Now.AddMonths(2)));
+        store.AddProduct(new Product("Апельсин", 1.29m, 150, DateTime.Now.AddMonths(3)));
 
+        store.ShowProducts();
 
-        MyArray<int> intArray = new MyArray<int>();
-        intArray.AddElement(10);
-        intArray.AddElement(20);
-        intArray.AddElement(30);
-        intArray.Print();
+        Console.WriteLine("\nВведите название товара для покупки:");
+        string productName = Console.ReadLine();
+        Console.WriteLine("Введите количество:");
+        int quantity = int.Parse(Console.ReadLine());
 
-        intArray.RemoveElement(1);
-        intArray.Print();
+        store.BuyProduct(productName, quantity);
 
-        Console.WriteLine("Элемент с индексом 1: " + intArray.GetElement(1));
+        Console.WriteLine("\nОставшиеся товары:");
+        store.ShowProducts();
 
+        MyArray<int> numbers = new MyArray<int>();
+        numbers.AddElement(1);
+        numbers.AddElement(2);
+        numbers.AddElement(3);
+        Console.WriteLine("\nЧисла в MyArray:");
+        numbers.Print();
 
-        Matrix<int> matrix = new Matrix<int>(3);
-        matrix.SetElement(0, 0, 1);
-        matrix.SetElement(0, 1, 2);
-        matrix.SetElement(0, 2, 3);
-        matrix.SetElement(1, 0, 4);
-        matrix.SetElement(1, 1, 5);
-        matrix.SetElement(1, 2, 6);
-        matrix.SetElement(2, 0, 7);
-        matrix.SetElement(2, 1, 8);
-        matrix.SetElement(2, 2, 9);
-
+        Matrix<int> matrix = new Matrix<int>(2);
+        matrix.SetElement(0, 0, 5);
+        matrix.SetElement(0, 1, 10);
+        matrix.SetElement(1, 0, 15);
+        matrix.SetElement(1, 1, 20);
+        Console.WriteLine("\nМатрица:");
         matrix.Print();
     }
 }

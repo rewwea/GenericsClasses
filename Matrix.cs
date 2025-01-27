@@ -1,8 +1,8 @@
 using System;
 
-public class Matrix<T> where T : struct
+public class Matrix<T>
 {
-    T[,] data;
+    private T[,] data;
 
     public Matrix(int size)
     {
@@ -17,7 +17,7 @@ public class Matrix<T> where T : struct
         }
         else
         {
-            Console.WriteLine("Индекс выходит за рамки дозволенного!");
+            Console.WriteLine("Индекс за пределами матрицы!");
         }
     }
 
@@ -29,8 +29,8 @@ public class Matrix<T> where T : struct
         }
         else
         {
-            Console.WriteLine("Индекс выходит за рамки дозволенного!");
-            return default;
+            Console.WriteLine("Индекс за пределами матрицы!");
+            return default(T); // Возвращаем значение по умолчанию
         }
     }
 
