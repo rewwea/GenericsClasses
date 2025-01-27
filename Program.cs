@@ -5,11 +5,11 @@ class Program
     static void Main()
     {
         Store store = new Store();
-        store.AddProduct(new Product("Milk", 1.2, 100));
-        store.AddProduct(new Product("Bread", 0.5, 200));
+        store.AddProduct(new Product("Кефир", 1.2, 100));
+        store.AddProduct(new Product("Печенье", 0.5, 200));
 
-        store.PurchaseProduct("Milk", 2);
-        store.PurchaseProduct("Bread", 5);
+        store.PurchaseProduct("Кефир", 2);
+        store.PurchaseProduct("Печенье", 5);
 
 
         MyArray<int> intArray = new MyArray<int>();
@@ -21,7 +21,7 @@ class Program
         intArray.RemoveElement(1);
         intArray.Print();
 
-        Console.WriteLine("Element at index 1: " + intArray.GetElement(1));
+        Console.WriteLine("Элемент с индексом 1: " + intArray.GetElement(1));
 
 
         Matrix<int> matrix = new Matrix<int>(3);

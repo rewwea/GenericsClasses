@@ -1,53 +1,33 @@
 using System;
+using System.Collections.Generic;
 
 public class Store
 {
-    public MyArray<Product> Products { get; set; }
-
-    public Store()
-    {
-        Products = new MyArray<Product>();
-    }
+    List<Product> products = new List<Product>();
 
     public void AddProduct(Product product)
     {
-        Products.AddElement(product);
+        products.Add(product);
     }
 
-    public void ShowProducts()
+    public void PurchaseProduct(string productName, int quantity)
     {
-        Console.WriteLine("Available Products:");
-        for (int i = 0; i < Products.GetElement(0).Quantity; i++) // Получаем первый элемент в MyArray
+        foreach (var product in products)
         {
-            var product = Products.GetElement(i);
-            Console.WriteLine($"Name: {product.Name}, Price: {product.Price}, Quantity: {product.Quantity}, Expiry Date: {product.ExpiryDate.ToShortDateString()}");
-        }
-    }
-
-    public void BuyProduct(string productName, int quantityToBuy)
-    {
-        bool found = false;
-        for (int i = 0; i < Products.GetElement(0).Quantity; i++)
-        {
-            var product = Products.GetElement(i);
-            if (product.Name.ToLower() == productName.ToLower() && product.Quantity >= quantityToBuy)
+            if (product.Name == productName)
             {
-                product.Quantity -= quantityToBuy;
-                decimal totalPrice = quantityToBuy * product.Price;
-                Console.WriteLine($"Purchase successful! Total price: {totalPrice:C}");
-                Console.WriteLine("Receipt:");
-                Console.WriteLine($"Product: {product.Name}");
-                Console.WriteLine($"Quantity: {quantityToBuy}");
-                Console.WriteLine($"Price per unit: {product.Price:C}");
-                Console.WriteLine($"Total: {totalPrice:C}");
-                found = true;
-                break;
+                if (product.Quantity >= quantity)
+                {
+                    product.Quantity -= quantity;
+                    Console.WriteLine($"Приобретенный {quantity} от {productName}. Итоговая цена: {quantity * product.Price}");
+                }
+                else
+                {
+                    Console.WriteLine("Недостаточно запасов!");
+                }
+                return;
             }
         }
-
-        if (!found)
-        {
-            Console.WriteLine("Sorry, the product is either out of stock or doesn't exist.");
-        }
+        Console.WriteLine("Товар не найден!");
     }
 }
